@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="scripts.VisitingdetailsTest">
+        <methods>
+          <include name="tc_016_recentVisit"/>
+          <include name="closeApp"/>
+          <include name="tc_015_checkAddedAttacment"/>
+          <include name="openApp"/>
+        </methods>
+      </class> <!-- scripts.VisitingdetailsTest -->
+      <class name="scripts.LoginTest">
+        <methods>
+          <include name="tc_001_logIn"/>
+          <include name="closeApp"/>
+          <include name="openApp"/>
+        </methods>
+      </class> <!-- scripts.LoginTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
