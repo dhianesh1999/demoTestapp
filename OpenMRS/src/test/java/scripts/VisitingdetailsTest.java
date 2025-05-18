@@ -1,26 +1,26 @@
 package scripts;
 
-import java.util.List;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import pomPages.VisitdetailsPom;
 import pomPages.PatientRegPom;
 import utilities.BaseClass;
 import utilities.FieldInputData;
 import utilities.utilities;
-import scripts.PatientRegTest;
 
 public class VisitingdetailsTest extends BaseClass {
 	
 	@Test(priority = 1)
 	public void tc_011_startVisit() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView(true);", VisitdetailsPom.startVisit);
+		js.executeScript("arguments[0].scrollIntoView(false);", VisitdetailsPom.startVisit);
 		utilities.waitUntilElementIsClickable(driver, VisitdetailsPom.startVisit);
 		VisitdetailsPom.startVisit.click();
 		VisitdetailsPom.confirmPopup.click();
@@ -36,10 +36,10 @@ public class VisitingdetailsTest extends BaseClass {
 	public void tc_013_addAttachment()  {		
 		VisitdetailsPom.attachmentButton.click();
 		// i used list to find any element has a input type=file key and it have one input type and it was hidden so i use js executor to upload
-		List<WebElement> inputs = driver.findElements(By.tagName("input"));
-		for (WebElement input : inputs) {
-		    System.out.println("Type: " + input.getAttribute("type"));
-		}
+//		List<WebElement> inputs = driver.findElements(By.tagName("input"));
+//		for (WebElement input : inputs) {
+//		    System.out.println("Type: " + input.getAttribute("type"));
+//		}
 
 		WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -58,11 +58,14 @@ public class VisitingdetailsTest extends BaseClass {
 	@Test(priority = 5)
 	public void tc_015_checkAddedAttacment() {
 		driver.navigate().back();
+		driver.navigate().back();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		String patientName=PatientRegPom.givenName.getText();
 		Assert.assertEquals(patientName, PatientRegTest.firstName);
-		
-		boolean isattachment= VisitdetailsPom.fileIcon.isDisplayed();
-		Assert.assertTrue(isattachment);
+        boolean isattachment= VisitdetailsPom.fileIcon.isDisplayed();
+		SoftAssert soAssert = new SoftAssert();
+		soAssert.assertTrue(isattachment);
+		soAssert.assertAll();
 	}
 	
 	@Test(priority = 6)
