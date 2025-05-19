@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite name="Failed suite [Suite]">
+  <test thread-count="5" name="LoginTests(failed)">
     <classes>
       <class name="scripts.LoginTest">
         <methods>
@@ -11,38 +11,6 @@
           <include name="captureScreenshot"/>
         </methods>
       </class> <!-- scripts.LoginTest -->
-      <class name="scripts.EndVisitAndDeleteTest">
-        <methods>
-          <include name="tc_017_endVisit"/>
-          <include name="closeApp"/>
-          <include name="tc_019_verifyToast"/>
-          <include name="openApp"/>
-          <include name="tc_018_deletePatient"/>
-          <include name="captureScreenshot"/>
-          <include name="tc_020_searchDeletePatient"/>
-        </methods>
-      </class> <!-- scripts.EndVisitAndDeleteTest -->
-      <class name="scripts.PatientRegTest">
-        <methods>
-          <include name="closeApp"/>
-          <include name="openApp"/>
-          <include name="captureScreenshot"/>
-          <include name="tc_010_patientDetailsPage"/>
-        </methods>
-      </class> <!-- scripts.PatientRegTest -->
-      <class name="scripts.VisitingdetailsTest">
-        <methods>
-          <include name="tc_016_recentVisit"/>
-          <include name="closeApp"/>
-          <include name="tc_012_onVisitPage"/>
-          <include name="openApp"/>
-          <include name="tc_015_checkAddedAttacment"/>
-          <include name="tc_013_addAttachment"/>
-          <include name="captureScreenshot"/>
-          <include name="tc_011_startVisit"/>
-          <include name="tc_014_verifyToast"/>
-        </methods>
-      </class> <!-- scripts.VisitingdetailsTest -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- LoginTests(failed) -->
 </suite> <!-- Failed suite [Suite] -->

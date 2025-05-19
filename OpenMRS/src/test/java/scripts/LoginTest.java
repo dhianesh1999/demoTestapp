@@ -1,26 +1,26 @@
 package scripts;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pomPages.LoginPom;
 import utilities.BaseClass;
-
-
+import utilities.utilities;
 
 public class LoginTest extends BaseClass {
-		
- 
- @Test
- public void tc_001_logIn() {
- LoginPom.username.sendKeys("Admin");
- LoginPom.password.sendKeys("Admin123");
- LoginPom.location.click();
- LoginPom.loginButton.click();
- String title= driver.getTitle();
- Assert.assertEquals(title,"Home");
- 
 
+    @Test
+    public void tc_001_logIn() throws IOException {
+        LoginPom login = new LoginPom(driver);
+
+        login.enterUsername(utilities.propertyFile("username"));
+        login.enterPassword(utilities.propertyFile("password"));
+        login.selectLocation();
+        login.clickLogin();
+
+        Assert.assertTrue(login.verifyLogin());
+    }
 }
- 
-}
+

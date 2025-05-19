@@ -1,6 +1,7 @@
 package scripts;
 
-import org.openqa.selenium.JavascriptExecutor;
+import java.time.Duration;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,6 +11,7 @@ import utilities.FieldInputData;
 
 public class EndVisitAndDeleteTest extends BaseClass{
 	
+	
 	@Test(priority= 1)
 	public void tc_017_endVisit() {
 		EndVisitAndDeletePom.endVisitButton.click();
@@ -17,9 +19,8 @@ public class EndVisitAndDeleteTest extends BaseClass{
 		}
 	
 	@Test(priority = 2)
-	public void tc_018_deletePatient() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView(false);", EndVisitAndDeletePom.deleteButton);
+	public void tc_018_deletePatient() throws InterruptedException {
+		Thread.sleep(Duration.ofSeconds(10));
 		EndVisitAndDeletePom.deleteButton.click();
 		EndVisitAndDeletePom.reasonToDelete.sendKeys(FieldInputData.randamAlpha(6));
 		EndVisitAndDeletePom.confirmDelete.click();
@@ -34,7 +35,7 @@ public class EndVisitAndDeleteTest extends BaseClass{
 	public void tc_020_searchDeletePatient() {
 		EndVisitAndDeletePom.searchBar.sendKeys(PatientRegTest.firstName);
 		boolean nodata= EndVisitAndDeletePom.noMatchFound.isDisplayed();
-		Assert.assertFalse(nodata);
+		Assert.assertTrue(nodata);
 	}
 
 }
